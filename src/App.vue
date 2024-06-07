@@ -181,7 +181,7 @@ h3 {
 @media screen and (max-width:600px) and (min-width:300px) {
   #divPrincipal {
     width: 100%;
-    /* height: 340vh; */
+    height: 290vh;
   }
 
   .q-pa-md {
