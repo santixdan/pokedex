@@ -1,55 +1,54 @@
 <template>
+
   <body>
-    <div id="divPrincipal" :style="`background-color:${pokemonColor}`" style="height: 100vh; background-size: cover;">
+    <div id="divPrincipal" :style="`background-color:${pokemonColor}`">
       <div class="q-pa-md">
-        <div class="q-gutter-md row items-start">
+        <div id="inputClass" class="q-gutter-md row items-start">
           <q-input v-model="search" filled type="search" placeholder="Name or ID of the Pokemon" id="input"
             @keydown.enter="buscarPokemon" aria-required="">
             <template v-slot:append>
               <q-btn icon="search" @click="traer()" />
             </template>
           </q-input>
-          <span>
-            <h1 id="pokemonName" style="text-transform: uppercase;">{{ namPokemon }}</h1>
-          </span>
         </div>
+        <h1 id="pokemonName" style="text-transform: uppercase;">{{ namPokemon }}</h1>
       </div>
-      <div id="pokemonDiv1">
+      <div class="pokemonDiv1">
         <img :src="imgPokemon" alt="" id="imgPokemon">
       </div>
-      <div id="textPokemon">
+      <div class="textPokemon">
         <h3 v-show="visible">{{ idPokemon }}</h3>
         <!-- <h3 v-show="visible">{{ namPokemon }}</h3> -->
         <h3 v-show="visible">{{ abiPokemon1 }}</h3>
         <h3 v-show="visible">{{ heiPokemon }}</h3>
         <h3 v-show="visible">{{ weiPokemon }}</h3>
       </div>
-      <div class="q-pa-md flex flex-center">
-        <q-circular-progress show-value font-size="25px" :value="value" size="150px" :thickness="0.22" color="teal"
+      <div id="circularClass" class="q-pa-md flex flex-center">
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value" size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Hp
         </q-circular-progress>
-        <q-circular-progress show-value font-size="25px" :value="value1" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value1" size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Attack
         </q-circular-progress>
-        <q-circular-progress show-value font-size="25px" :value="value2" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value2" size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Defense
         </q-circular-progress>
-        <q-circular-progress show-value font-size="25px" :value="value3" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value3" size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Special <br> Attack
         </q-circular-progress>
-        <q-circular-progress show-value font-size="25px" :value="value4" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value4" size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Special <br> Defense
         </q-circular-progress>
-        <q-circular-progress show-value font-size="25px" :value="value5" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value5" size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Speed
         </q-circular-progress>
-        <q-circular-progress show-value font-size="25px" :value=100 size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="25px" :value=100 size="150px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           <q-btn icon="volume_up" @click="reproducir()" />
         </q-circular-progress>
@@ -135,23 +134,26 @@ async function reproducir() {
   font-family: pokeletra;
   src: url("./font/PokemonSolid.ttf");
 }
+
 * {
   font-family: pokeletra;
   z-index: 9;
 }
-body{
+
+/* body{
   background-image: url("https://wallpapers-clan.com/wp-content/uploads/2024/04/pokemon-eevee-sitting-in-field-anime-preview-desktop-wallpaper.jpg");
-  /* background-image: url("https://i.pinimg.com/736x/8a/21/05/8a21052e2cf3617f797381d759ab730e.jpg"); */
+  background-image: url("https://i.pinimg.com/736x/8a/21/05/8a21052e2cf3617f797381d759ab730e.jpg");
   background-size: cover;
   object-fit: cover;
   width: 100%;
-}
+} */
 #pokemonName {
   letter-spacing: 5px;
-  margin: 0%;
-  position: absolute;
-  transform: translate(350px, 0px);
+  /* margin: 0%; */
+  /* position: absolute; */
+  /* transform: translate(350px, 0px); */
 }
+
 h3 {
   margin: 2%;
   background-color: rgba(126, 126, 126, 0.477);
@@ -160,22 +162,78 @@ h3 {
   padding: 20px;
   text-align: center;
 }
+
 .q-pa-md {
   padding-bottom: 0px;
   padding-top: 5px;
 }
-#pokemonDiv1 {
+
+.pokemonDiv1 {
   position: absolute;
   transform: translate(150%, 0%);
   width: 40%;
 }
+
 #imgPokemon {
   width: 80%;
 }
-@media screen and (max-width:600px) and (min-width:300px){
-  #divPrincipal{
-    width: 190%;
-    height: 800%;
+
+@media screen and (max-width:600px) and (min-width:300px) {
+  #divPrincipal {
+    width: 300%;
+    height: 340vh;
+  }
+
+  .q-pa-md {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    gap: 30%;
+    /* align-items: center; */
+  }
+
+  #inputClass{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+  }
+  #pokemonName{
+    margin: 0%;
+  }
+
+  .pokemonDiv1 {
+    position: absolute;
+    transform: translate(150%, 5%);
+  }
+
+  #imgPokemon {
+    width: 400%;
+  }
+
+  .textPokemon{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 1%;
+    margin-top: 60%;
+    align-items: center;
+  }
+  h3{
+    width: 90%;
+  }
+  #circularClass{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+    justify-items: center;
+    gap: 1%;
+  }
+  q-circular-progress{
+    font-size: 30% !important;
   }
 }
 </style>
