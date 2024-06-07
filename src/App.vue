@@ -24,31 +24,31 @@
         <h3 v-show="visible">{{ weiPokemon }}</h3>
       </div>
       <div id="circularClass" class="q-pa-md flex flex-center">
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value="value" size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Hp
         </q-circular-progress>
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value1" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value="value1" size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Attack
         </q-circular-progress>
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value2" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value="value2" size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Defense
         </q-circular-progress>
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value3" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value="value3" size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Special <br> Attack
         </q-circular-progress>
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value4" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value="value4" size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Special <br> Defense
         </q-circular-progress>
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value="value5" size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value="value5" size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           Speed
         </q-circular-progress>
-        <q-circular-progress id="circularProgress" show-value font-size="25px" :value=100 size="150px" :thickness="0.22" color="teal"
+        <q-circular-progress id="circularProgress" show-value font-size="20px" :value=100 size="120px" :thickness="0.22" color="teal"
           track-color="grey-3" class="q-ma-md" v-show="visible">
           <q-btn icon="volume_up" @click="reproducir()" />
         </q-circular-progress>
@@ -180,8 +180,8 @@ h3 {
 
 @media screen and (max-width:600px) and (min-width:300px) {
   #divPrincipal {
-    width: 300%;
-    height: 340vh;
+    width: 100%;
+    /* height: 340vh; */
   }
 
   .q-pa-md {
@@ -189,51 +189,51 @@ h3 {
     display: grid;
     grid-template-rows: 1fr 1fr;
     justify-content: center;
-    gap: 30%;
-    /* align-items: center; */
+    /* gap: 30%; */
+    align-items: center;
   }
 
-  #inputClass{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0%;
-  }
   #pokemonName{
+    display: flex;
+    justify-content: center;
     margin: 0%;
+    font-size: 350%;
   }
 
   .pokemonDiv1 {
     position: absolute;
-    transform: translate(150%, 5%);
+    transform: translate(30%, 5%);
   }
 
   #imgPokemon {
-    width: 400%;
+    width: 200%;
   }
 
   .textPokemon{
+    /* width: 33%; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     gap: 1%;
-    margin-top: 60%;
-    align-items: center;
+    margin-top: 90%;
+    /* align-items: center; */
   }
   h3{
     width: 90%;
+    font-size: 200%;
+    /* text-align: center;*/
+    align-content: center; 
   }
   #circularClass{
-    width: 100%;
+    /* width: 80%; */
     display: grid;
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 1fr 1fr;
     justify-items: center;
-    gap: 1%;
+    /* justify-content: center; */
+    /* gap: 1%; */
   }
   q-circular-progress{
-    font-size: 30% !important;
+    size: 50%;
   }
 }
 </style>
