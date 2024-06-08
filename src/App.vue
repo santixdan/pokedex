@@ -248,6 +248,7 @@ h3 {
   border-radius: 10px;
   padding: 20px;
   text-align: center;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.77);
 }
 
 #mdlTitle {
