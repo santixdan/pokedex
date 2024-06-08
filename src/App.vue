@@ -6,9 +6,9 @@
         <div class="inputClass">
           <div class="q-gutter-md row items-start">
             <q-input v-model="search" filled type="search" placeholder="Name or ID of the Pokemon" id="input"
-              @keyup.enter="traer()" aria-required="">
+              @keyup.enter="validar()" aria-required="">
               <template v-slot:append>
-                <q-btn icon="search" @click="traer()" :style="`color:${contrastingColor}`" />
+                <q-btn icon="search" @click="validar()" :style="`color:${contrastingColor}`" />
                 <q-btn icon="volume_up" @click="reproducir()" v-show="visible" :style="`color:${contrastingColor}`" />
               </template>
             </q-input>
@@ -32,34 +32,41 @@
           @click="filter.onClick" id="btnStatis" v-show="visible" />
         <q-dialog v-model="dialog" :backdrop-filter="backdropFilter">
           <q-card class="mdlStatis" :style="`background-color:${contrastingColor}`">
-            <q-card-section class="row items-center q-pb-none text-h6" id="mdlTitle" :style="`color:${textColor} !important` ">
+            <q-card-section class="row items-center q-pb-none text-h6" id="mdlTitle"
+              :style="`color:${textColor} !important`">
               Statistics
             </q-card-section>
 
             <q-card-section>
               <div id="circularClass" class="q-pa-md flex flex-center">
                 <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible" :style="`color:${textColor} !important` ">
+                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                  :style="`color:${textColor} !important`">
                   Hp
                 </q-circular-progress>
                 <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value1" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible" :style="`color:${textColor} !important` ">
+                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                  :style="`color:${textColor} !important`">
                   Attack
                 </q-circular-progress>
                 <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value2" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible" :style="`color:${textColor} !important` ">
+                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                  :style="`color:${textColor} !important`">
                   Defense
                 </q-circular-progress>
                 <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value3" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible" :style="`color:${textColor} !important` ">
+                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                  :style="`color:${textColor} !important`">
                   Special <br> Attack
                 </q-circular-progress>
                 <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value4" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible" :style="`color:${textColor} !important` ">
+                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                  :style="`color:${textColor} !important`">
                   Special <br> Defense
                 </q-circular-progress>
                 <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value5" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible" :style="`color:${textColor} !important` ">
+                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                  :style="`color:${textColor} !important`">
                   Speed
                 </q-circular-progress>
               </div>
@@ -78,7 +85,7 @@
 import axios from "axios"
 import { ref } from "vue";
 
-const search = ref('')
+let search = ref('')
 let imgPokemon = ref("")
 let namPokemon = ref("Pokémon")
 let abiPokemon1 = ref("")
@@ -137,24 +144,24 @@ const contrastingColors = {
   dark: 'lightgrey'//799
 };
 const textColors = {
-  fire: 'white',         // Contrasta con el negro
-  water: 'black',        // Contrasta con el amarillo
-  grass: 'white',        // Contrasta con el púrpura
-  electric: 'white',     // Contrasta con el azul oscuro
-  ground: 'black',       // Contrasta con el azul claro
-  rock: 'black',         // Contrasta con el gris claro
-  fairy: 'white',        // Contrasta con el azul oscuro
-  poison: 'black',       // Contrasta con el verde lima
-  bug: 'darkgreen',      // Contrasta con el verde claro
-  dragon: 'black',       // Contrasta con el cian
-  psychic: 'black',      // Contrasta con el amarillo
-  flying: 'white',       // Contrasta con el rojo oscuro
-  fighting: 'darkgreen', // Contrasta con el verde claro
-  normal: 'white',       // Contrasta con el negro
-  ice: 'white',          // Contrasta con el azul oscuro
-  ghost: 'black',        // Contrasta con el dorado
-  steel: 'black',        // Contrasta con el azul claro
-  dark: 'black',         // Contrasta con el gris claro
+  fire: 'white',
+  water: 'black',
+  grass: 'white',
+  electric: 'white',
+  ground: 'black',
+  rock: 'black',
+  fairy: 'white',
+  poison: 'black',
+  bug: 'darkgreen',
+  dragon: 'black',
+  psychic: 'black',
+  flying: 'white',
+  fighting: 'darkgreen',
+  normal: 'white',
+  ice: 'white',
+  ghost: 'black',
+  steel: 'black',
+  dark: 'black',
 };
 
 const list = ['STATISTICS']
@@ -168,6 +175,14 @@ let backdropFilterList = list.map(filter => ({
     dialog.value = true
   }
 }))
+
+function validar() {
+  if (search.value === "") {
+    alert("Please, enter a Pokémon name or ID")
+  } else {
+    traer()
+  }
+}
 
 async function traer() {
   let pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.value}`)
