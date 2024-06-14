@@ -21,11 +21,15 @@
         <img :src="imgPokemon" alt="" id="imgPokemon">
       </div>
       <div class="textPokemon">
-        <h3 v-show="visible" :style="`color:${contrastingColor}`">{{ idPokemon }}</h3>
-        <!-- <h3 v-show="visible">{{ namPokemon }}</h3> -->
-        <h3 v-show="visible" :style="`color:${contrastingColor}`">{{ abiPokemon1 }}</h3>
-        <h3 v-show="visible" :style="`color:${contrastingColor}`">{{ heiPokemon }}</h3>
-        <h3 v-show="visible" :style="`color:${contrastingColor}`">{{ weiPokemon }}</h3>
+        <div class="power">
+          <h3 id="h3Abi2" v-show="visible" :style="`color:${contrastingColor}`">{{ abiPokemon1 }}</h3>
+          <h3 id="h3Abi2" v-show="visibleAbi" :style="`color:${contrastingColor2}; background-color:${pokemonColor2}`">
+            {{
+            abiPokemon2 }}</h3>
+        </div>
+        <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ idPokemon }}</h3>
+        <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ heiPokemon }}</h3>
+        <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ weiPokemon }}</h3>
       </div>
       <div class="btnStatistics">
         <q-btn v-for="filter in backdropFilterList" :key="filter.label" color="primary" :label="filter.label" no-caps
@@ -39,36 +43,54 @@
 
             <q-card-section>
               <div id="circularClass" class="q-pa-md flex flex-center">
-                <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
-                  :style="`color:${textColor} !important`">
-                  Hp
-                </q-circular-progress>
-                <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value1" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
-                  :style="`color:${textColor} !important`">
-                  Attack
-                </q-circular-progress>
-                <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value2" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
-                  :style="`color:${textColor} !important`">
-                  Defense
-                </q-circular-progress>
-                <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value3" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
-                  :style="`color:${textColor} !important`">
-                  Special <br> Attack
-                </q-circular-progress>
-                <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value4" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
-                  :style="`color:${textColor} !important`">
-                  Special <br> Defense
-                </q-circular-progress>
-                <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value5" size="810%"
-                  :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
-                  :style="`color:${textColor} !important`">
-                  Speed
-                </q-circular-progress>
+                <div class="progressValue">
+                  <h5 :style="`color:${textColor} !important`">Hp</h5>
+                  <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value" size="810%"
+                    :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                    :style="`color:${textColor} !important`">
+                    {{ numValue }}
+                  </q-circular-progress>
+                </div>
+                <div class="progressValue">
+                  <h5 :style="`color:${textColor} !important`">Attack</h5>
+                  <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value1" size="810%"
+                    :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                    :style="`color:${textColor} !important`">
+                    {{ numValue1 }}
+                  </q-circular-progress>
+                </div>
+                <div class="progressValue">
+                  <h5 :style="`color:${textColor} !important`">Defense</h5>
+                  <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value2" size="810%"
+                    :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                    :style="`color:${textColor} !important`">
+                    {{ numValue2 }}
+                  </q-circular-progress>
+                </div>
+                <div class="progressValue">
+                  <h5 :style="`color:${textColor} !important`">Special <br> Attack</h5>
+                  <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value3" size="810%"
+                    :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                    :style="`color:${textColor} !important`">
+                    {{ numValue3 }}
+                  </q-circular-progress>
+                </div>
+                <div class="progressValue">
+                  <h5 :style="`color:${textColor} !important`">Special <br> Defense</h5>
+                  <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value4" size="810%"
+                    :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                    :style="`color:${textColor} !important`">
+                    {{ numValue4 }}
+                  </q-circular-progress>
+                </div>
+                <div class="progressValue">
+                  <h5 :style="`color:${textColor} !important`">Speed <br></h5>
+                  <q-circular-progress id="circularProgress" show-value font-size="20%" :value="value5" size="810%"
+                    :thickness="0.15" color="teal" track-color="grey-3" class="q-ma-md" v-show="visible"
+                    :style="`color:${textColor} !important`">
+                    {{ numValue5 }}
+                  </q-circular-progress>
+                </div>
               </div>
             </q-card-section>
 
@@ -89,6 +111,7 @@ let search = ref('')
 let imgPokemon = ref("")
 let namPokemon = ref("Pokémon")
 let abiPokemon1 = ref("")
+let abiPokemon2 = ref("")
 let idPokemon = ref("")
 let heiPokemon = ref("")
 let weiPokemon = ref("")
@@ -98,10 +121,20 @@ let value2 = ref()
 let value3 = ref()
 let value4 = ref()
 let value5 = ref()
+let numValue = ref()
+let numValue1 = ref()
+let numValue2 = ref()
+let numValue3 = ref()
+let numValue4 = ref()
+let numValue5 = ref()
 let visible = ref(false)
+let visibleAbi = ref(false)
 let pokemonType = ref("")
+let pokemonType2 = ref("")
 let pokemonColor = ref('');
+let pokemonColor2 = ref('');
 let contrastingColor = ref('')
+let contrastingColor2 = ref('')
 let textColor = ref('')
 const pokemonColors = {
   fire: 'orange',
@@ -185,12 +218,22 @@ function validar() {
 }
 
 async function traer() {
+
   let pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.value}`)
   visible.value = true
   imgPokemon.value = pokemon.data.sprites.other["official-artwork"].front_default
   idPokemon.value = "#" + pokemon.data.id
   namPokemon.value = pokemon.data.species.name
-  abiPokemon1.value = "Type: " + pokemon.data.types.map(t => t.type.name).join(", ");
+  abiPokemon1.value = pokemon.data.types[0].type.name;
+  if (pokemon.data.types.length > 1) {
+    visibleAbi.value = true
+    abiPokemon2.value = pokemon.data.types[1].type.name;
+    pokemonType2 = pokemon.data.types[1].type.name
+    pokemonColor2.value = pokemonColors[pokemonType2];
+    contrastingColor2.value = contrastingColors[pokemonType2];
+  } else {
+    visibleAbi.value = false
+  }
   heiPokemon.value = "Height: " + pokemon.data.height / 10 + "m"
   weiPokemon.value = "Weight: " + pokemon.data.weight / 10 + "Kg"
   pokemonType = pokemon.data.types[0].type.name
@@ -198,11 +241,17 @@ async function traer() {
   contrastingColor.value = contrastingColors[pokemonType];
   textColor.value = textColors[pokemonType];
   value.value = (pokemon.data.stats[0].base_stat * 100) / 255
+  numValue.value = pokemon.data.stats[0].base_stat
   value1.value = (pokemon.data.stats[1].base_stat * 100) / 255
+  numValue1.value = pokemon.data.stats[1].base_stat
   value2.value = (pokemon.data.stats[2].base_stat * 100) / 255
+  numValue2.value = pokemon.data.stats[2].base_stat
   value3.value = (pokemon.data.stats[3].base_stat * 100) / 255
+  numValue3.value = pokemon.data.stats[3].base_stat
   value4.value = (pokemon.data.stats[4].base_stat * 100) / 255
+  numValue4.value = pokemon.data.stats[4].base_stat
   value5.value = (pokemon.data.stats[5].base_stat * 100) / 255
+  numValue5.value = pokemon.data.stats[5].base_stat
   console.log(pokemon);
   console.log(pokemonColor);
   console.log(pokemonType);
@@ -278,10 +327,19 @@ body {
   transform: translateY(4px);
 }
 
-h3 {
+#h3Abi {
   margin: 2%;
   background-color: rgba(126, 126, 126, 0.477);
   width: 25%;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.77);
+}
+
+#h3Abi2 {
+  margin: 2%;
+  background-color: rgba(126, 126, 126, 0.477);
   border-radius: 10px;
   padding: 20px;
   text-align: center;
@@ -301,6 +359,26 @@ h3 {
 .q-pa-md {
   padding-bottom: 0px;
   padding-top: 5px;
+}
+
+.power {
+  width: 25%;
+  margin: 2%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.progressValue {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+h5 {
+  margin: 0%;
 }
 
 .pokemonDiv1 {
@@ -328,6 +406,16 @@ h3 {
     width: 100%;
     display: grid;
     grid-template-rows: 1fr 1fr;
+  }
+
+  .power {
+    display: flex;
+    flex-direction: column;
+    width: 110%;
+  }
+
+  #h3Abi2{
+    font-size: 170%;
   }
 
   .inputClass {
@@ -363,7 +451,7 @@ h3 {
     margin-top: 75%;
   }
 
-  h3 {
+  #h3Abi {
     width: 90%;
     font-size: 170%;
   }
@@ -411,12 +499,23 @@ h3 {
     width: 70%;
   }
 
+  .power {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* #h3Abi2{
+    width: 100%;
+    font-size: 170%;
+  } */
+
   .textPokemon {
+    font-size: 150%;
     margin: 0%;
     transform: translate(0%, -20%);
   }
 
-  h3 {
+  #h3Abi {
     width: 30%;
     font-size: 170%;
   }
