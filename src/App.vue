@@ -19,21 +19,18 @@
       </div>
       <div class="pokemonDiv1">
         <img :src="imgPokemon" alt="" id="imgPokemon">
+        <q-btn v-for="filter in backdropFilterList" :key="filter.label" color="primary" :label="filter.label" no-caps
+          @click="filter.onClick" id="btnStatis" v-show="visible" />
       </div>
       <div class="textPokemon">
-        <div class="power">
-          <h3 id="h3Abi2" v-show="visible" :style="`color:${contrastingColor}`">{{ abiPokemon1 }}</h3>
-          <h3 id="h3Abi2" v-show="visibleAbi" :style="`color:${contrastingColor2}; background-color:${pokemonColor2}`">
-            {{
-            abiPokemon2 }}</h3>
-        </div>
+        <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ abiPokemon1 }}</h3>
+        <h3 id="h3Abi" v-show="visibleAbi" :style="`color:${contrastingColor2}; background-color:${pokemonColor2}`">
+          {{ abiPokemon2 }}</h3>
         <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ idPokemon }}</h3>
         <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ heiPokemon }}</h3>
         <h3 id="h3Abi" v-show="visible" :style="`color:${contrastingColor}`">{{ weiPokemon }}</h3>
       </div>
       <div class="btnStatistics">
-        <q-btn v-for="filter in backdropFilterList" :key="filter.label" color="primary" :label="filter.label" no-caps
-          @click="filter.onClick" id="btnStatis" v-show="visible" />
         <q-dialog v-model="dialog" :backdrop-filter="backdropFilter">
           <q-card class="mdlStatis" :style="`background-color:${contrastingColor}`">
             <q-card-section class="row items-center q-pb-none text-h6" id="mdlTitle"
@@ -337,15 +334,6 @@ body {
   box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.77);
 }
 
-#h3Abi2 {
-  margin: 2%;
-  background-color: rgba(126, 126, 126, 0.477);
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.77);
-}
-
 #mdlTitle {
   font-size: 30px;
   display: flex;
@@ -359,14 +347,6 @@ body {
 .q-pa-md {
   padding-bottom: 0px;
   padding-top: 5px;
-}
-
-.power {
-  width: 25%;
-  margin: 2%;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
 }
 
 .progressValue {
@@ -408,16 +388,6 @@ h5 {
     grid-template-rows: 1fr 1fr;
   }
 
-  .power {
-    display: flex;
-    flex-direction: column;
-    width: 110%;
-  }
-
-  #h3Abi2{
-    font-size: 170%;
-  }
-
   .inputClass {
     width: 100%;
     display: flex;
@@ -448,7 +418,8 @@ h5 {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     gap: 3%;
-    margin-top: 75%;
+    margin-top: 105%;
+    margin-bottom: 15%;
   }
 
   #h3Abi {
@@ -460,6 +431,15 @@ h5 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+    font-size: 11px;
+  }
+
+  .progressValue {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    /* justify-content: center; */
+    text-align: center;
   }
 
   .btnStatistics {
@@ -471,7 +451,7 @@ h5 {
 
   #btnStatis {
     font-size: 150% !important;
-    width: 50%;
+    width: 150%;
   }
 }
 
@@ -499,17 +479,10 @@ h5 {
     width: 70%;
   }
 
-  .power {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* #h3Abi2{
-    width: 100%;
-    font-size: 170%;
-  } */
-
   .textPokemon {
+    z-index: 0;
+    position: relative;
+    /* position: static; */
     font-size: 150%;
     margin: 0%;
     transform: translate(0%, -20%);
@@ -518,19 +491,23 @@ h5 {
   #h3Abi {
     width: 30%;
     font-size: 170%;
+    margin: 1.2%;
   }
 
   .btnStatistics {
     margin: 0%;
-    width: 50%;
+    /* margin-top: 5%; */
+    width: 30%;
+    z-index: 2;
+    position: relative;
     display: flex;
     justify-content: center;
-    transform: translate(90%, -190%);
+    transform: translate(180%, -170%);
   }
 
   #btnStatis {
-    font-size: 150% !important;
-    width: 50%;
+    font-size: 160% !important;
+    width: 60%;
   }
 }
 </style>
