@@ -303,7 +303,7 @@ body {
   border: none;
   border-radius: 25px;
   margin: 2%;
-  width: 25%;
+  width: 50%;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
@@ -368,7 +368,7 @@ h5 {
 }
 
 #imgPokemon {
-  width: 95%;
+  width: 75%;
 }
 
 @media screen and (max-width:800px) and (min-width:300px) {
